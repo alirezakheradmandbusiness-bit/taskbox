@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* بک‌گراند با افکت تار */
+.bg-layer {
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  z-index: -1;
+  overflow: hidden;
+  filter: blur(15px);
+}
+
+.bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  background-color: #ffffff;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 15%;
+}
+
+.shape-3 {
+  width: 250px;
+  height: 250px;
+  bottom: 5%;
+  left: 30%;
+}
+
+.shape-4 {
+  width: 150px;
+  height: 150px;
+  top: 25%;
+  left: 70%;
+}
+
+.shape-5 {
+  width: 180px;
+  height: 180px;
+  bottom: 30%;
+  right: 40%;
+}
+
+/* باکس لاگین */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+}
+
+h1 {
+  color: #1a1a2e;
+  margin-bottom: 5px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* تب‌ها */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  background-color: #f0f1f3;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 7px;
+  background-color: transparent;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.tab-btn.active {
+  background-color: #ffffff;
+  color: #2563eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* فرم‌ها */
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.submit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* پیام‌های خطا و موفقیت */
+.error-message {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 18px;
+}
+
+.success-message {
+  color: #22c55e;
+  font-size: 13px;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 18px;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 500px) {
+  .login-container {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}

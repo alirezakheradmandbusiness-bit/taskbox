@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskBox</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-layer">
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+    <div class="bg-shape shape-4"></div>
+    <div class="bg-shape shape-5"></div>
+  </div>
+
+  <!-- هدر کوچک گوشه سمت چپ بالا -->
+  <div class="user-header">
+    <span class="welcome-text"><span id="usernameDisplay">User</span></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="main-wrapper">
+    <!-- باکس چپ: اضافه کردن تسک -->
+    <div class="left-panel">
+      <h2 class="panel-title">Add Task</h2>
+      <div class="input-group">
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+      </div>
+    </div>
+
+    <!-- باکس راست: لیست تسک‌ها -->
+    <div class="right-panel">
+      <h2 class="panel-title">Tasks</h2>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+        <button class="filter-btn" onclick="setFilter('active', this)">Active</button>
+        <button class="filter-btn" onclick="setFilter('completed', this)">Completed</button>
+      </div>
+      <div class="stats">
+        <span id="stat-total">Total: 0</span>
+        <span id="stat-completed">Completed: 0</span>
+        <span id="stat-remaining">Remaining: 0</span>
+      </div>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+<!-- پاپ‌آپ زمان شروع -->
+<div class="modal-overlay" id="startTimeModal">
+  <div class="modal">
+    <h3>Set Start Time</h3>
+    <p>When did you start this task?</p>
+    <input type="datetime-local" id="startTimeInput">
+    <div class="modal-buttons">
+      <button class="modal-btn cancel" onclick="closeStartModal()">Cancel</button>
+      <button class="modal-btn confirm" onclick="confirmStartTime()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- پاپ‌آپ زمان اتمام -->
+<div class="modal-overlay" id="endTimeModal">
+  <div class="modal">
+    <h3>Set End Time</h3>
+    <p>When did you complete this task?</p>
+    <input type="datetime-local" id="endTimeInput">
+    <div class="modal-buttons">
+      <button class="modal-btn cancel" onclick="closeEndModal()">Cancel</button>
+      <button class="modal-btn confirm" onclick="confirmEndTime()">Confirm</button>
+    </div>
+  </div>
+</div>
+  <script src="app.js"></script>
+</body>
+</html>
