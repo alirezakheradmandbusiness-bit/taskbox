@@ -1,8 +1,19 @@
 const Database = require("better-sqlite3");
 const path = require("path");
+const fs = require("fs");
 
-// مسیر فایل دیتابیس: در کنار همین فایل (db.js)
-const dbPath = path.join(__dirname, "taskbox.db");
+// در Railway از volume استفاده می‌کنیم، در حالت لوکال از پوشه Server
+const dataDir = process.env.RAILWAY_VOLUME_MOUNT_PATH || __dirname;
+
+// مطمئن شو پوشه data وجود دارد (برای Railway)
+if (process.env.RAILWAY_VOLUME_MOUNT_PATH && !fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// مسیر فایل دیتابیس
+const dbPath = path.join(dataDir, "taskbox.db");
+
+console.log("Database path:", dbPath);
 
 // ایجاد یا باز کردن دیتابیس
 const db = new Database(dbPath);
