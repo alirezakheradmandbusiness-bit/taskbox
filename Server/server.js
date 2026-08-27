@@ -11,7 +11,7 @@ const port = 3000;
 const JWT_SECRET = "taskbox-secret-key-2024";
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "..")));
+app.use(express.static(__dirname));
 
 // ============================================
 // تابع احراز هویت (چک کردن توکن)
