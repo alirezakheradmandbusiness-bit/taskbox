@@ -165,7 +165,18 @@ app.patch("/api/tasks/:id", authenticateToken, function (request, response) {
 });
 
 const PORT = process.env.PORT || 3000;
+// مسیر شمارنده بازدید
+app.get("/api/visit", function (request, response) {
+  db.prepare("UPDATE visits SET visit_count = visit_count + 1").run();
+  const result = db.prepare("SELECT visit_count FROM visits").get();
+  response.json({ visits: result.visit_count });
+});
 
+// مسیر گرفتن تعداد بازدید
+app.get("/api/visits", function (request, response) {
+  const result = db.prepare("SELECT visit_count FROM visits").get();
+  response.json({ visits: result.visit_count });
+});
 app.listen(PORT, function () {
   console.log("Server is running on port " + PORT);
 });

@@ -38,7 +38,19 @@ db.exec(`
     end_time TEXT
   )
 `);
+// ساخت جدول بازدیدها
+db.exec(`
+  CREATE TABLE IF NOT EXISTS visits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    visit_count INTEGER DEFAULT 0
+  )
+`);
 
+// اگر جدول خالی است، یک ردیف اولیه بساز
+const visitRow = db.prepare("SELECT COUNT(*) as count FROM visits").get();
+if (visitRow.count === 0) {
+  db.prepare("INSERT INTO visits (visit_count) VALUES (0)").run();
+}
 // بررسی و اضافه کردن فیلدهای جدید به جدول tasks (برای دیتابیس‌های قبلی)
 const tableInfo = db.prepare("PRAGMA table_info(tasks)").all();
 

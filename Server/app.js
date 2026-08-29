@@ -397,3 +397,17 @@ mainWrapper.addEventListener("mouseleave", function () {
 // بارگذاری اولیه
 // ============================================
 loadTasks();
+// ============================================
+// شمارنده بازدید
+// ============================================
+async function trackVisit() {
+  try {
+    const response = await fetch("/api/visit");
+    const data = await response.json();
+    document.getElementById("visitCount").textContent = data.visits;
+  } catch (err) {
+    console.log("Visit tracking failed:", err);
+  }
+}
+
+trackVisit();
